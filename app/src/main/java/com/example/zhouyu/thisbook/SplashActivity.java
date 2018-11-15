@@ -11,6 +11,7 @@ import android.view.animation.ScaleAnimation;
 import android.widget.RelativeLayout;
 
 import com.example.zhouyu.thisbook.CacheUtils.CacheUtils;
+import com.example.zhouyu.thisbook.activity.GuideActivity;
 
 public class SplashActivity extends Activity {
 
@@ -56,21 +57,20 @@ public class SplashActivity extends Activity {
         @Override
         public void onAnimationEnd(Animation animation) {
             //Judge if go through the welcome page
-            boolean isStartMain = CacheUtils.getBoolean(this, START_MAIN);
+            boolean isStartMain = CacheUtils.getBoolean(SplashActivity.this, START_MAIN);
             if(isStartMain){
                 //if yes
+
             }else{
                 //if no, go into guard page
-                Intent intent = new Intent(this, GuideActivity.class);
-                startActivities(intent);
+                Intent intent = new Intent(SplashActivity.this, GuideActivity.class);
+                startActivity(intent);
             }
-
+            //close splash page
+            finish();
 
 
         }
-
-        finish();
-        
 
         @Override
         public void onAnimationRepeat(Animation animation) {
